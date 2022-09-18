@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h2>Proof of Concept</h2>
+<p>
+    Show alert box, if the same link is open in another tab.
+</p>
+
+<p>Saved name is:</p>
+<p id="demo"></p>
+
+<script>
+if (localStorage.tabCount > 0 && !sessionStorage.getItem("mobile"))
+    alert('This Page is already open in another tab. Please switch to tab to continue with your work.');
+else{
+    localStorage.tabCount = 0;
+    sessionStorage.setItem("mobile", Math.random());
+}
+
+localStorage.tabCount = +localStorage.tabCount + 1;
+window.onunload = function () {
+    localStorage.tabCount = +localStorage.tabCount - 1;
+};
+</script>
+
+</body>
+</html>
